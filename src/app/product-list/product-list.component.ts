@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-product-list',
   standalone: true,

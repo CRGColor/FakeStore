@@ -5,19 +5,19 @@ import { ProductFormComponent } from './product-form/product-form.component';
 
 export const routes: Routes = [
     {
-        path: 'http://localhost:4200/products',
+        path: 'products',
         component: ProductListComponent
     },
     {
-        path: 'http://localhost:4200/products/:id',
+        path: 'products/:id',
         component: ProductDetailComponent
     },
     {
-        path: 'http://localhost:4200/new',
+        path: 'products/new',
         component: ProductFormComponent
     },
     {
-        path: 'http://localhost:4200/products/:id/edit',
+        path: 'products/:id/edit',
         component: ProductFormComponent
     }
 ];
