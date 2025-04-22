@@ -1,21 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/product';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private url = 'https://api.example.com/fakestore'
+  private url = 'https://fakestoreapi.com/products'
 
   constructor(private http: HttpClient) { }
 
-  getProducts() {
-    return this.http.get(`${this.url}`);
+  getProducts(): Observable<Product[]> {
+    return this.http.get <Product[]>(`${this.url}`);
   }
 
-  getProductDetails(id: number) {
-    return this.http.get(`${this.url}/${id}`);
+  getProductDetails(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.url}/${id}`);
   }
 
   addProduct(product: Product) {

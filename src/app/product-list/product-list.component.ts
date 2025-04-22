@@ -1,22 +1,24 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import { HttpClient } from '@angular/common/http';
+import { Product } from '../interfaces/product';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, CommonModule],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent {
+
+  products: Product[] = [];
 
   private productService = inject(ProductService);
-  private http = inject(HttpClient);
 
-  ngOnInit(): void {
-    this.productService.getProducts()
-    
-  }
+  products$ = this.productService.getProducts();
+
 }

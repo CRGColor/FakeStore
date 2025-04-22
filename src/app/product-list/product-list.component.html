@@ -1,1 +1,15 @@
-<p>product-list works!</p>
+<div class="product-list" *ngIf="(products$ | async) as products">
+        <div>
+            @if (!products.length) {
+                Loading products...
+            }
+        </div>
+        <div class="product-card">
+            @for (product of products; track $index) {
+                <h3>{{ product.nombre }}</h3>
+                <p>{{ product.info }}</p>
+                <strong>${{ product.precio }}</strong>
+                <button [routerLink]="['/product', product.id]">View details</button>
+            }
+        </div>
+</div>
