@@ -1,33 +1,3 @@
-<!-- <div class="product-list">
-    <table class="product-grid" *ngIf="(products$ | async) as products; else loading">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Info</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @for (product of products; track $index) {
-                    <td>{{ product.nombre }}</td>
-                    <td>{{ product.info }}</td>
-                    <td>{{ product.precio }}</td>
-                    <td>
-                        <button [routerLink]="['/products', product.id]">View</button>
-                    </td>
-                }
-            </tr>
-        </tbody>
-    </table>
-
-    <ng-template #loading>
-        <p>Loading products...</p>
-    </ng-template>
-    
-</div> -->
-
 <div class="product-grid" *ngIf="products$ | async as products">
     @if (!products.length) {
         <p>Loading products...</p>
@@ -35,9 +5,10 @@
 
     @for (product of products; track $index) {
         <div class="product-card">
-            <h3>{{ product.nombre }}</h3>
-            <p>{{ product.info }}</p>
-            <strong>{{ product.precio }}</strong>
+            <h3>{{ product.nombre }}Product</h3>
+            <img src="../../assets/img/placeholder.png" alt="placeholder" class="placeholder">
+            <p>{{ product.info }}Detalles</p>
+            <strong>${{ product.precio }}1000</strong>
             <button [routerLink]="['/products', product.id]">View</button>
         </div>
     }
