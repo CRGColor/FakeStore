@@ -13,10 +13,6 @@ export const routes: Routes = [
         component: ProductDetailComponent
     },
     {
-        path: 'products/new',
-        component: ProductFormComponent
-    },
-    {
         path: 'products/:id/edit',
         component: ProductFormComponent
     },
