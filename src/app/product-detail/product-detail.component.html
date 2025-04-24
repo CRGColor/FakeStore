@@ -1,1 +1,10 @@
-<p>product-detail works!</p>
+<div class="product-detail" *ngIf="product$ | async as product">
+    <h2>{{ product.title }}</h2>
+    <img [src]="product.image || '../../assets/img/placeholder.png'" alt="{{ product.title }}">
+    <p>{{ product.description }}</p>
+    <p><strong>Price: </strong>${{ product.price }}</p>
+    <button [routerLink]="['/products', product.id, 'edit']">Edit Product</button>
+
+
+    <button routerLink="/products">Back to Products</button>
+</div>

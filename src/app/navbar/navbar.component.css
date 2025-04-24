@@ -34,4 +34,9 @@
     color: #f9c74f;
     cursor: pointer;
   }
+
+  .logo a {
+    text-decoration: none;
+    color: inherit;
+  }
  

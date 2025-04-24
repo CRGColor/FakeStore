@@ -5,11 +5,11 @@
 
     @for (product of products; track $index) {
         <div class="product-card">
-            <h3>{{ product.nombre }}Product</h3>
-            <img src="../../assets/img/placeholder.png" alt="placeholder" class="placeholder">
-            <p>{{ product.info }}Detalles</p>
-            <strong>${{ product.precio }}1000</strong>
+            <h3>{{ product.title }}</h3>
+            <img [src]="product.image || '../../assets/img/placeholder.png'"  alt="{{product.title}}" class="placeholder">
+            <strong>${{ product.price }}</strong>
             <button [routerLink]="['/products', product.id]">View</button>
+            <button [routerLink]="['/products', product.id, 'edit']">Edit</button>
         </div>
     }
 </div>

@@ -19,12 +19,12 @@ export class ProductService {
     return this.http.get<Product>(`${this.url}/${id}`);
   }
 
-  addProduct(product: Product) {
-    return this.http.post(`${this.url}`, product);
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.url}`, product);
   }
 
-  updateProduct(id: number, product: Product) {
-    return this.http.put(`${this.url}/${id}`, product);
+  updateProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.url}/${product.id}`, product);
   }
 
   deleteProduct(id: number) {
