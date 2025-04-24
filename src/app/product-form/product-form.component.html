@@ -1,27 +1,45 @@
 <div class="form-container">
-    <h2>{{ isEditMode ? 'Edit Product' : 'Add New Product'}}</h2>
+    <h2>{{ isEditMode ? 'Edit Product' : 'Add New Product' }}</h2>
 
-    <form (ngSubmit)="saveProduct()" #form="ngForm">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <label>
             Name:
-            <input type="text" [(ngModel)]="product.title" name="title" required />
+            <input formControlName="title">
         </label>
+        <div>
+            @if (productForm.get('title')?.invalid && productForm.get('title')?.touched) {
+                Name is required
+            }
+        </div>
 
         <label>
             Details:
-            <textarea [(ngModel)]="product.description" name="description" required></textarea>
+            <textarea formControlName="description"></textarea>
         </label>
+        <div>
+            @if (productForm.get('description')?.invalid && productForm.get('description')?.touched) {
+                Details are required
+            }
+        </div>
 
         <label>
             Price:
-            <input type="number" [(ngModel)]="product.price" name="price" required />
+            <input type="number" formControlName="price">
         </label>
+        <div>
+            @if (productForm.get('price')?.invalid && productForm.get('price')?.touched) {
+                Price must be greater than or equal to 0
+            }
+        </div>
 
         <label>
-            Image:
-            <input [(ngModel)]="product.image" name="image" />
+            Image URL:
+            <input formControlName="image">
         </label>
 
-        <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+        <button type="submit" [disabled]="productForm.invalid">
+            {{ isEditMode ? 'Update' : 'Add' }}
+        </button>
+       
     </form>
 </div>
